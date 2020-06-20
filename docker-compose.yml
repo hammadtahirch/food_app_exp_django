@@ -1,0 +1,85 @@
+version: '3.7'
+
+services:
+  #app instance settings
+  web:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    command: python manage.py runserver 0.0.0.0:4000
+    image: python
+    container_name: food_delivery_app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    volumes:
+      - ./:/usr/src/app/
+    networks:
+      - app-network
+    depends_on:
+      - db
+    env_file:
+      - ./.env.dev
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: food_delivery_webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "4000:80"
+      - "4040:443"
+    expose:
+      - "4000"
+      - "4040"
+      - "4001"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+    depends_on:
+      - web
+
+  #MySQL instance settings
+  db:
+    image: mysql:5.7.22
+    container_name: food_delivery_db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3304:3306"
+    expose:
+      - "3306"
+    environment:
+      MYSQL_DATABASE: local_food_delivery_db
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+  #REDIS instance settings
+  radis:
+    image: redis
+    container_name: food_delivery_redis
+    ports:
+      - "63794:6379"
+    expose:
+      - "6379"
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
