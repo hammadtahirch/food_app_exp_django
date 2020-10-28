@@ -18,6 +18,7 @@ RUN set -e; \
                 postgresql-dev \
         ;
 
+RUN apk add zlib-dev jpeg-dev gcc musl-dev
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install mysqlclient

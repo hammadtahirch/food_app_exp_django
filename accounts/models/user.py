@@ -4,12 +4,13 @@ from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
-from accounts.views.managers import UserManager
+from ..views.managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         app_label = "accounts"
+        db_table = 'users'
 
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(max_length=100, default=None)
@@ -18,6 +19,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
+    deleted_at = models.DateTimeField(null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']

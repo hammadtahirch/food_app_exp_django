@@ -3,3 +3,5 @@ mysqlclient==1.3.13
 django-mysql==2.2.0
 djangorestframework
 django-filter
+Pillow
+django-nested-admin
