@@ -18,12 +18,14 @@ class Shop(models.Model):
     latitude = models.DecimalField(max_digits=30, decimal_places=15, null=True, blank=True)
     slug = models.CharField(max_length=255, null=True, unique=True)
     is_active = models.BooleanField(default=False)
+    is_close = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
     deleted_at = models.DateTimeField(null=True, blank=True)
     user_id = models.ForeignKey(User, verbose_name=_("user_id"), on_delete=models.CASCADE)
 
-    REQUIRED_FIELDS = ['name', 'address', 'user']
+    REQUIRED_FIELDS = ['name', 'address', 'city', 'province', 'country', 'longitude', 'latitude',
+                       'slug', 'is_active', 'is_close', 'user_id']
 
     def __str__(self):
         return self.name

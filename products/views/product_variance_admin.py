@@ -12,7 +12,13 @@ class ProductVarianceAdmin(nested_admin.NestedTabularInline):
     fieldsets = (
         (None,
          {'fields':
-              ("title", "description", "max_permitted", "min_permitted", "product_id")}),
+             (
+                 "title",
+                 "description",
+                 "max_permitted",
+                 "min_permitted",
+                 "product_id"
+             )}),
     )
 
     inlines = [
