@@ -21,7 +21,7 @@ class ShopTiming(models.Model):
     shop_id = models.ForeignKey(Shop, verbose_name=_("shop_id"), on_delete=models.CASCADE)
 
     REQUIRED_FIELDS = ['day', 'delivery_start_time', 'delivery_end_time', 'pick_up_start_time', 'pick_up_end_time',
-                       'user_id']
+                       'shop_id']
 
     def __str__(self):
         return self.day

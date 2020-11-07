@@ -1,9 +1,9 @@
 from django.contrib import admin
 import nested_admin
-from products.views.product_variance_admin import ProductVarianceAdmin
+from products.views.product_variance_admin_view import ProductVarianceAdminView
 
 
-class ProductAdmin(nested_admin.NestedModelAdmin):
+class ProductAdminView(nested_admin.NestedModelAdmin):
     list_display = ("title", "description", "price", "is_published", "published_at", "is_active")
     list_filter = ("title", "description", "price", "is_published", "published_at", "is_active")
     search_fields = ("title__startswith", "price__startswith")
@@ -15,5 +15,5 @@ class ProductAdmin(nested_admin.NestedModelAdmin):
     )
 
     inlines = [
-        ProductVarianceAdmin,
+        ProductVarianceAdminView,
     ]

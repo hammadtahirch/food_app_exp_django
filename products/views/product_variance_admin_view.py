@@ -1,10 +1,10 @@
 from django.contrib import admin
 import nested_admin
 from products.models import ProductVariance
-from products.views.product_variance_option_admin import ProductVarianceOptionAdmin
+from products.views.product_variance_option_admin_view import ProductVarianceOptionAdminView
 
 
-class ProductVarianceAdmin(nested_admin.NestedTabularInline):
+class ProductVarianceAdminView(nested_admin.NestedTabularInline):
     model = ProductVariance
     extra = 1
     list_display = ("title", "description", "max_permitted", "min_permitted", "product_id")
@@ -22,5 +22,5 @@ class ProductVarianceAdmin(nested_admin.NestedTabularInline):
     )
 
     inlines = [
-        ProductVarianceOptionAdmin
+        ProductVarianceOptionAdminView
     ]

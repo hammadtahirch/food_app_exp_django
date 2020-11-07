@@ -14,6 +14,8 @@ import os
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import system_settings
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -35,6 +37,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'shops.apps.ShopsConfig',
     'products.apps.ProductsConfig',
+    'system_settings.apps.SystemSettingsConfig',
+    'djrichtextfield',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
@@ -131,6 +135,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+DJRICHTEXTFIELD_CONFIG = {
+    'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
+    'init_template': 'djrichtextfield/init/tinymce.js',
+    'settings': {
+        'menubar': False,
+        'plugins': 'link image',
+        'toolbar': 'bold italic | link image | removeformat',
+        'width': 630
+    }
+}
 
 
 # Internationalization

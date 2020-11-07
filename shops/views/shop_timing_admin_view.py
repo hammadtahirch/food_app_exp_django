@@ -3,9 +3,11 @@ from django.contrib import admin
 from shops.models.shop_timing import ShopTiming
 
 
-class ShopTimingAdmin(admin.TabularInline):
+class ShopTimingAdminView(admin.TabularInline):
     model = ShopTiming
-    extra = 1
+    extra = 0
+    min_num = 7
+
     list_display = ("day",
                     "delivery_start_time",
                     "delivery_end_time",
