@@ -10,4 +10,4 @@ class ProductVarianceOptionAdminView(nested_admin.NestedTabularInline):
     list_filter = ("title", "component_price", "variance_id")
     fieldsets = (
         (None,
-         {'fields': ("title", "component_price", "variance_id")}),)
+         {'fields': ("title", "component_price", "variance")}),)

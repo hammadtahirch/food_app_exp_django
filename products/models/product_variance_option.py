@@ -11,12 +11,12 @@ class ProductVarianceOption(models.Model):
         db_table = 'product_variance_options'
 
     title = models.CharField(max_length=255, null=True)
-    component_price = models.IntegerField(default=0)
+    component_price = models.DecimalField(max_digits=65, default=0, decimal_places=2)
 
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
     deleted_at = models.DateTimeField(null=True, blank=True)
-    variance_id = models.ForeignKey(ProductVariance, verbose_name=_("variance_id"), on_delete=models.CASCADE)
+    variance = models.ForeignKey(ProductVariance, verbose_name=_("variance_id"), on_delete=models.CASCADE)
 
     REQUIRED_FIELDS = ['title', 'component_price', 'variance_id']
 

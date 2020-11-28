@@ -17,7 +17,7 @@ class ProductVariance(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
     deleted_at = models.DateTimeField(null=True, blank=True)
-    product_id = models.ForeignKey(Product, verbose_name=_("product_id"), on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, verbose_name=_("product_id"), on_delete=models.CASCADE)
 
     REQUIRED_FIELDS = ['title', 'product_id', 'description', 'max_permitted', 'min_permitted']
 

@@ -18,10 +18,10 @@ class ShopTiming(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
     deleted_at = models.DateTimeField(null=True, blank=True)
-    shop_id = models.ForeignKey(Shop, verbose_name=_("shop_id"), on_delete=models.CASCADE)
+    shop = models.ForeignKey(Shop, verbose_name=_("shop_id"), on_delete=models.CASCADE)
 
     REQUIRED_FIELDS = ['day', 'delivery_start_time', 'delivery_end_time', 'pick_up_start_time', 'pick_up_end_time',
-                       'shop_id']
+                       'shop']
 
     def __str__(self):
         return self.day

@@ -12,12 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import system_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -37,8 +35,10 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'shops.apps.ShopsConfig',
     'products.apps.ProductsConfig',
+    'orders.apps.OrdersConfig',
     'system_settings.apps.SystemSettingsConfig',
     'djrichtextfield',
+    'static',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-
 ]
 
 MIDDLEWARE = [
@@ -68,7 +66,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
-
 
 ROOT_URLCONF = 'food_delivery_app.urls'
 
@@ -95,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'food_delivery_app.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -116,7 +112,6 @@ DATABASES = {
         'PORT': os.environ.get("MYSQL_PORT"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -147,7 +142,6 @@ DJRICHTEXTFIELD_CONFIG = {
     }
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -161,8 +155,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+GOOGLE_MAPS_API_KEY = 'AIzaSyDhR2Gcghu225LDO5lr8JGiEQXE67f1l4o'
+STATIC_ROOT = ''
+STATICFILES_DIRS = (os.path.join('static'),)

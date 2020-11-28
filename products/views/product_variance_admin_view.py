@@ -17,7 +17,7 @@ class ProductVarianceAdminView(nested_admin.NestedTabularInline):
                  "description",
                  "max_permitted",
                  "min_permitted",
-                 "product_id"
+                 "product"
              )}),
     )
 

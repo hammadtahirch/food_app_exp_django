@@ -16,5 +16,5 @@ def create_user_profile(sender, instance, created, **kwargs):
             shop_timing.delivery_end_time = '20:00:00'
             shop_timing.pick_up_start_time = '9:00:00'
             shop_timing.pick_up_end_time = '20:00:00'
-            shop_timing.shop_id = instance
+            shop_timing.shop_id = instance.id
             shop_timing.save()
