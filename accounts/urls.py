@@ -1,8 +1,5 @@
 from django.urls import path
-
-from .views.auth_token import AuthTokenView
-from .views.user import LoginView
-from rest_framework.authtoken import views
+from .views.api.user_view import LoginView
 
 
 urlpatterns = [
