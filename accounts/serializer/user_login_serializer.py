@@ -5,8 +5,12 @@ from ..models.user import User
 
 
 class UserLoginSerializer(serializers.ModelSerializer):
-    email = serializers.CharField(required=True)
-    password = serializers.CharField(required=True)
+    email = serializers.CharField(required=True, error_messages={
+        "blank": "Oh Ho! email is required.",
+    })
+    password = serializers.CharField(required=True, error_messages={
+        "blank": "Oh Ho! password is required.",
+    })
     groups = GroupSerializer(read_only=True, many=True)
 
     class Meta:
@@ -16,7 +20,6 @@ class UserLoginSerializer(serializers.ModelSerializer):
             'password',
             'first_name',
             'last_name',
-            'is_staff',
             'is_active',
             'groups',
         )

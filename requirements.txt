@@ -6,3 +6,5 @@ django-filter
 Pillow
 django-nested-admin
 django-richtextfield==1.6
+django-q
+redis

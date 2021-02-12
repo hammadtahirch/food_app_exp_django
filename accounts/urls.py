@@ -1,10 +1,12 @@
 from django.urls import path
-from .views.api.user_view import LoginView
-
+from .views.api.user_view import CustomerLoginView, DriverLoginView, ShopKeeperLoginView, \
+    CustomerRegistrationView
 
 urlpatterns = [
-    path('login', LoginView.as_view(), name='login'),
+    path('customer_login', CustomerLoginView.as_view(), name='customer_login'),
+    path('driver_login', DriverLoginView.as_view(), name='driver_login'),
+    path('shop_keeper_login', ShopKeeperLoginView.as_view(), name='shop_keeper_login'),
 
-    # path('api-token-auth/', views.obtain_auth_token),
-    # path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+
+    path('customer_registration', CustomerRegistrationView.as_view(), name='registration')
 ]
